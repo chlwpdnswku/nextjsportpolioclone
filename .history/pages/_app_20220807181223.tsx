@@ -1,0 +1,47 @@
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
+// import { wrapper } from '../store';
+import wrapper from '../store/index';
+
+import Head from 'next/head';
+import Applayout from '../component/Applayout';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+
+const App = ({ Component: any }) => {
+  // pages의 공통 부분
+  return (
+    <>
+      <Head>
+        <meta charSet='utf-8' />
+        <title>NodeBird</title>
+      </Head>
+      <Component />
+    </>
+  );
+};
+
+App.propTypes = {
+  Component: PropTypes.elementType.isRequired,
+};
+export default wrapper.withRedux(App);
+
+// function MyApp({ Component, pageProps }: AppProps) {
+//   // const { isLoggedIn } = useSelector((state: any) => state.user);
+//   // const { mainPosts } = useSelector((state: any) => state.post);
+//   return (
+//     <>
+//       <Head>
+//         <meta charSet='utf-8' />
+//         <title>현재 app.tsx pages</title>
+//         <Component {...pageProps} />;
+//       </Head>
+//     </>
+//   );
+// }
+// // // 이건 시도때도없이 넣음 혹시모르니 넣어보고 공부
+// // MyApp.propTypes = {
+// //   Component: PropTypes.elementType.isRequired,
+// // };
+
+// export default wrapper.withRedux(MyApp);
